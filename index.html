@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080608">
+<title>SUKUNA ADB — SUKUNA NETWORK</title>
+<style>
+:root{--bg:#080608;--panel:#160d11;--red:#e5092e;--hot:#ff405b;--muted:#b99aa2;--line:#4a1724;--white:#fff4f5}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 50% 10%,#4a0718 0,transparent 42%),linear-gradient(160deg,#080608,#12070c 55%,#050405);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.app{max-width:540px;margin:auto;padding:env(safe-area-inset-top) 14px calc(28px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;padding:17px 2px 14px}.brand{display:flex;align-items:center;gap:10px}.sigil{width:43px;height:43px;border:1px solid #ff3855;border-radius:13px;display:grid;place-items:center;color:#ff536b;font-size:24px;font-weight:1000;text-shadow:0 0 12px #ff173c;background:linear-gradient(145deg,#4c0718,#14070c);box-shadow:0 0 22px #e5092e44}.brand b{display:block;font-size:14px;letter-spacing:1.6px}.brand small{color:#c48a96;font-size:9px;letter-spacing:2px}.live{font-size:9px;color:#ff9aaa;border:1px solid #7d1a30;padding:7px 9px;border-radius:20px;letter-spacing:1px}
+.hero{border:1px solid #7a1b31;border-radius:22px;overflow:hidden;position:relative;padding:20px 17px 18px;background:radial-gradient(circle at 50% 20%,#76112b 0,#290914 42%,#10080c 82%);box-shadow:0 0 35px #e5092e25}
+.hero:before,.hero:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #ff405522;border-radius:50%;left:50%;top:47%;transform:translate(-50%,-50%);box-shadow:0 0 0 18px #ff40540a,0 0 0 38px #ff405407}.hero:after{width:230px;height:230px;border-style:dashed;animation:spin 38s linear infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes rise{0%,100%{transform:translateY(5px)}50%{transform:translateY(-9px)}}@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}50%{transform:translateX(4px)}75%{transform:translateX(-2px)}}
+.eyebrow{text-align:center;color:#ff8294;font-size:9px;letter-spacing:3px;font-weight:900;position:relative;z-index:1}.sukuna{position:relative;z-index:1;text-align:center;font-size:78px;line-height:1.25;font-weight:1000;color:#ff334f;text-shadow:0 0 10px #ff193e,0 0 30px #d00030;filter:drop-shadow(0 8px 18px #000);margin:6px 0 0;animation:rise 3s ease-in-out infinite;user-select:none}.hero h1{position:relative;z-index:1;text-align:center;font-size:21px;letter-spacing:2px;margin:0 0 5px}.hero p{position:relative;z-index:1;text-align:center;color:#d8aab4;font-size:11px;margin:0 0 16px}
+button{font:inherit;color:inherit;cursor:pointer}.primary,.domain{position:relative;z-index:1;width:100%;padding:14px 12px;border-radius:13px;background:linear-gradient(90deg,#8c071f,#f0183d,#970820);border:1px solid #ff7a8e;color:white;font-weight:1000;letter-spacing:1px;font-size:12px;box-shadow:0 0 22px #e5092e55,inset 0 1px #ffffff35}.section{display:flex;justify-content:space-between;align-items:center;margin:19px 2px 10px}.section h2{font-size:12px;letter-spacing:1.4px;margin:0}.section span{font-size:9px;color:#bd8995}
+.panel{background:linear-gradient(145deg,#1a0e13,#10090d);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:9px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.panel h3{font-size:12px;margin:0 0 5px}.panel p{font-size:10px;color:var(--muted);line-height:1.55;margin:8px 0 0}.tag{display:inline-block;border:1px solid #63303a;color:#ff9aa5;padding:5px 8px;border-radius:8px;font-size:9px}.tag.warn{color:#ffd28b;border-color:#735126}.action{width:100%;display:flex;align-items:center;gap:11px;text-align:left;background:#1a0d12;border:1px solid #4a1724;border-radius:13px;padding:12px;margin:7px 0;color:var(--white)}.ico{width:34px;height:34px;border-radius:10px;background:#3a0c1b;color:#ff667d;display:grid;place-items:center;font-size:17px;flex:none}.action b{display:block;font-size:11px}.action small{display:block;color:#b99aa2;font-size:9px;margin-top:3px}.action .chev{margin-left:auto;color:#ff657a}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:linear-gradient(145deg,#1d1016,#100a0e);border:1px solid var(--line);border-radius:14px;padding:11px 9px}.metric label{display:block;font-size:9px;color:#c49aa3}.metric strong{display:block;font-size:19px;margin:4px 0;color:#fff}.metric small{font-size:9px;color:#9f7e86}.bar{height:5px;background:#43202a;border-radius:9px;margin-top:8px;overflow:hidden}.bar i{height:100%;display:block;background:linear-gradient(90deg,#9d0c2a,#ff4560);width:var(--w);border-radius:9px}
+.footer{text-align:center;color:#866b73;font-size:9px;line-height:1.6;margin:17px 8px}.toast{position:fixed;z-index:5;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;transition:.2s;background:#260d16;border:1px solid #9d2440;border-radius:12px;padding:11px 15px;font-size:11px;text-align:center;width:max-content;max-width:90%;box-shadow:0 8px 30px #0009}.toast.show{opacity:1;transform:translate(-50%,0)}
+.leaf{position:fixed;top:-30px;color:#ff405b;opacity:.7;pointer-events:none;z-index:0;animation:fall linear infinite;text-shadow:0 0 8px #ff193e}.leaf:nth-child(1){left:12%;animation-duration:10s}.leaf:nth-child(2){left:76%;animation-duration:13s;animation-delay:2s}.leaf:nth-child(3){left:43%;animation-duration:11s;animation-delay:4s}.leaf:nth-child(4){left:91%;animation-duration:15s;animation-delay:1s}
+@keyframes fall{to{transform:translate3d(35px,110vh,0) rotate(500deg)}}
+@media(min-width:540px){body{padding:12px 0}.app{border:1px solid #32121d;border-radius:25px;min-height:calc(100vh - 24px);overflow:hidden}}
+</style>
+</head>
+<body>
+<div class="leaf">🍁</div><div class="leaf">🍂</div><div class="leaf">🍁</div><div class="leaf">🍂</div>
+<div class="app">
+<header><div class="brand"><div class="sigil">領</div><div><b>SUKUNA ADB</b><small>SUKUNA NETWORK • GAME BOOSTER</small></div></div><div class="live">● HEART CORE</div></header>
+<section class="hero" id="hero">
+<div class="eyebrow">EXPANSÃO DE DOMÍNIO</div><div class="sukuna" aria-label="Sukuna">両</div>
+<h1>SANTUÁRIO MALEVOLENTE</h1><p id="voice">“Mostre-me o poder que você merece.”</p>
+<button class="domain" onclick="domainActivate()">EXPANSÃO DE DOMÍNIO</button>
+</section>
+<div class="section"><h2>CONEXÃO SHIZUKU</h2><span id="shizukuLabel">AGUARDANDO</span></div>
+<div class="panel"><div class="row"><b style="font-size:12px">SERVIÇO SHIZUKU</b><span class="tag warn" id="shizukuTag">NÃO VERIFICADO</span></div>
+<p>Abra o Shizuku e inicie o serviço pelo método disponível no seu Android. Esta página HTML não consegue confirmar autorização nem executar comandos ADB diretamente.</p>
+<button class="action" onclick="openShizuku()"><span class="ico">↗</span><span><b>ABRIR SHIZUKU</b><small>Tentar abrir o aplicativo instalado</small></span><span class="chev">›</span></button>
+<button class="action" onclick="showHelp()"><span class="ico">?</span><span><b>COMO CONECTAR</b><small>Ver as etapas de conexão</small></span><span class="chev">›</span></button>
+</div>
+<div class="section"><h2>LEITURA DO SISTEMA</h2><span id="metricStatus">SEM ACESSO NATIVO</span></div>
+<div class="metrics">
+<div class="metric"><label>FPS</label><strong id="fps">—</strong><small>requer integração nativa</small><div class="bar"><i id="fpsBar" style="--w:20%"></i></div></div>
+<div class="metric"><label>TEMPERATURA</label><strong>—</strong><small>sensor não conectado</small><div class="bar"><i style="--w:20%"></i></div></div>
+<div class="metric"><label>RAM</label><strong>—</strong><small>leitura não disponível</small><div class="bar"><i style="--w:20%"></i></div></div>
+</div>
+<div class="section"><h2>TÉCNICAS AMALDIÇOADAS</h2><span>PAINEL</span></div>
+<button class="action" onclick="cutWorld()"><span class="ico">⚔</span><span><b>CORTE DO MUNDO 1000%</b><small>Executar análise demonstrativa</small></span><span class="chev">›</span></button>
+<button class="action" onclick="ghostMode()"><span class="ico">◈</span><span><b>MODO FANTASMA</b><small>Prévia de foco — sem alterar notificações</small></span><span class="chev">›</span></button>
+<button class="action" onclick="gameSession()"><span class="ico">🎮</span><span><b>ANÁLISE DE PARTIDA</b><small>Iniciar sessão demonstrativa</small></span><span class="chev">›</span></button>
+<div class="panel"><div class="row"><div><h3>RANK DO FEITICEIRO</h3><small id="rankDesc" style="color:var(--muted);font-size:9px">Seu resultado aparecerá após a análise.</small></div><strong id="rank" style="font-size:17px;color:#ff526b">---</strong></div></div>
+<div class="footer">SUKUNA ADB • SUKUNA NETWORK<br>Interface HTML. Para ADB/Shizuku real, é necessário um aplicativo Android nativo com integração compatível e permissões concedidas pelo usuário.</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+let active=false,taps=0,secret=false,toastTimer;
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3000)}
+function say(t){document.getElementById('voice').textContent='“'+t+'”'}
+function domainActivate(){active=!active;const hero=document.getElementById('hero');hero.style.animation='shake .35s';setTimeout(()=>hero.style.animation='',380);document.querySelector('.domain').textContent=active?'DOMÍNIO ATIVADO':'EXPANSÃO DE DOMÍNIO';say(active?'SANTUÁRIO MALEVOLENTE...':'O domínio foi recolhido.');toast(active?'SANTUÁRIO MALEVOLENTE ATIVADO':'Domínio desativado.')}
+function openShizuku(){toast('Tentando abrir o Shizuku…');location.href='intent://#Intent;package=moe.shizuku.privileged.api;end';}
+function showHelp(){toast('1. Abra Shizuku. 2. Inicie o serviço. 3. Autorize SUKUNA ADB quando ele existir como app Android nativo.')}
+function cutWorld(){say('Análise iniciada.');document.getElementById('rank').textContent='GRAU ESPECIAL';document.getElementById('rankDesc').textContent='Resultado demonstrativo — nenhum dado real foi lido.';toast('Análise visual concluída. Nenhuma configuração do Android foi alterada.')}
+function ghostMode(){say('Silêncio no domínio.');toast('Prévia do Modo Fantasma. Notificações continuam funcionando normalmente.')}
+function gameSession(){say('A batalha começou. Mostre seu nível.');document.getElementById('rank').textContent='EM PARTIDA';document.getElementById('rankDesc').textContent='Sessão demonstrativa iniciada.';toast('Sessão visual iniciada.')}
+</script>
+</body>
+</html>
